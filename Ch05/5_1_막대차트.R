@@ -44,3 +44,68 @@ matrix_sample
 barplot(matrix_sample)
 barplot(matrix_sample,col = rainbow(3), beside=T,
         legend.text=T)
+
+
+# 세로 막대 차트 그리기 
+
+# 단계 1 :  차트 작성을 위한 자료 만들기 
+
+chart_data <- c(305,450,320,460,330,480,380,520)
+
+
+
+names(chart_data) <- c("2018 1분기","2019 1분기",
+                       "2018 2분기","2019 2분기",
+                       "2018 3분기","2019 3분기",
+                       "2018 4분기","2019 4분기"
+                       ) # 8개의 벡터에 칼럼명 지정 
+str(chart_data) # 자료구조 보기
+chart_data
+
+# 단계 2: 세로 막대 차트 그리기
+
+barplot(chart_data,ylim=c(0,600), # 차원의 높이에 해당하는 데이터 셋 지정 
+        col=rainbow(8), # 8가지 다른 색 
+        main="2021년도 vs 2019년도 매출현황 비교") # 제목 지정 
+help("barplot") # barplot() 함수 도움말 보기
+
+
+# 막대 차트의 가로축과 세로축에 레이블 추가하기 
+
+barplot(chart_data,ylim=c(0,600),
+        ylab="매출액(단위:만원)",
+        xlab="년도별 분기현황",
+        col= rainbow(8),
+        main = "2018년도 vs 2019년도 매출현황 비교")
+
+
+# 가로 막대 차트 그리기
+
+barplot(chart_data,xlim=c(0,600),horiz = T,
+        ylab="년도별 분기현황",
+        xlab="매출액(단위:만원)",
+        col= rainbow(8),
+        main = "2018년도 vs 2019년도 매출현황 비교")
+
+
+# 막대 차트에서 막대 사이의 간격 조정하기 
+
+barplot(chart_data, xlim=c(0,600), horiz=T,
+        ylab="년도별 분기현황",
+        xlab="매출액(단위:만원)",
+        col=rainbow(8),space=1,cex.names=0.8, # space속성으로 간격 커지고 두께 얇아진다 
+        # cex.names 속성으로 축이름의 크기 조정할 수 잇따 
+        main="2018년도 vs 2019년도 매출현황 비교")
+
+# 막대 차트에서 막대의 색상 지정하기 
+
+barplot(chart_data,xlim=c(0,600),horiz=T,
+        ylab="년도별 분기현황",
+        xlab="매출액(단위:만원)",
+        space = 1, cex.names = 0.8,
+        main="2018년도 vs 2019년도 매출현황 비교",
+        col= rep(c(2,4),4)) 
+        # c()함수에서 사용되는 색상관련 인수 값은 1~7까지로 지정된 색은 검은색 1
+        # 빨간색 2 초록색 3 파란색 4 하늘색 5 자주색 6 노란색 7 이다. 
+        # 2,4는 빨간색 파란색 선택되고 4는 4번 반복된다는 의미이다 
+
